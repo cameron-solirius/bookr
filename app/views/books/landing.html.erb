@@ -1,4 +1,14 @@
 
-<h1 class="text-center mb-4">Welcome to Bookr</h1>
+<h1 class="text-center mb-4 title-fade-in">Welcome to Bookr</h1>
 
-<h2><%= @books.length %> books complete</h2>
+<div class="landing-content">
+    <h2 class="text-center"><%= @books.length %> books complete!</h2>
+
+    <div class="landing-img-container">
+    <% @books.each do |book| %>
+        <%= image_tag 'bookr.png', class: "new-entry-img"%>
+    <% end %>
+    </div>
+</div>
+
+

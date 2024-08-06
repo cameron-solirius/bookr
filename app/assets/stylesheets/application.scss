@@ -58,6 +58,24 @@ main {
     margin-top: -0.3rem;
 }
 
+//  landing page styles
+.landing-content {
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.landing-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .landing-img {
+    max-width: 10rem;
+  }
+
 
 // Book shelf styles
 .book {
@@ -66,12 +84,41 @@ main {
     border-radius: 4px;
     box-shadow: 2rem rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, border-color 0.3s;
-    height: 350px; // 1.5 times the width
+    height: 350px;
     overflow: hidden;
     position: relative;
     display: flex;
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
   }
   
+  @keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(10rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0rem);
+    }
+}
+
+.title-fade-in {
+    animation: titleAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes titleAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
   .book:hover {
     transform: scale(1.05);
   }
@@ -108,14 +155,17 @@ main {
     margin: -0.5rem;
   }
 
-  // New Entry page custom styles
+ 
+// New Entry page custom styles
 .new-entry-container {
     max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
+    margin: 0px auto;
+    padding: 0px 20px 20px 20px;
     background-color: $bookr-brown-light;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
   }
   
   .form-group {
@@ -139,20 +189,25 @@ main {
     box-shadow: 0 0 5px rgba($bookr-red, 0.5);
   }
   
+  .form-control-checkbox {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+
+  .thoughts-input {
+    min-height: 500px;
+  }
+  
   .btn-custom {
     background-color: $bookr-red;
     border-color: $bookr-red;
     color: $bookr-white;
   }
   
-  .btn-custom:hover, .btn-custom:focus {
+  .btn-custom:hover,
+  .btn-custom:focus {
     background-color: darken($bookr-red, 10%);
     border-color: darken($bookr-red, 10%);
-  }
-  
-  .back-link {
-    margin-top: 20px;
-    text-align: center;
   }
   
   .btn-secondary {
@@ -161,7 +216,24 @@ main {
     color: $bookr-white;
   }
   
-  .btn-secondary:hover, .btn-secondary:focus {
+  .btn-secondary:hover,
+  .btn-secondary:focus {
     background-color: darken($bookr-brown-dark, 10%);
     border-color: darken($bookr-brown-dark, 10%);
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .new-entry-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .new-entry-img {
+    max-width: 10rem;
   }

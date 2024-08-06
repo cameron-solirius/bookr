@@ -1,18 +1,44 @@
-<h1>New Book</h1>
+<h1 class="text-center title-fade-in">New Book</h1>
 
 <div class="new-entry-container">
+  <div class="new-entry-img-container">
+    <%= image_tag 'bookr.png', class: "new-entry-img"%>
+  </div>
+
   <%= form_with(model: @book, local: true) do |form| %>
     <div class="form-group">
       <%= form.label :title, class: "form-label" %>
-      <%= form.text_field :title, class: "form-control" %>
+      <%= form.text_field :title, class: "form-control", required: true %>
     </div>
 
     <div class="form-group">
-      <%= form.submit "Create Book", class: "btn btn-primary btn-custom" %>
+      <%= form.label :author, class: "form-label" %>
+      <%= form.text_field :author, class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :rating, class: "form-label" %>
+      <%= form.number_field :rating, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :finished, class: "form-label" %>
+      <%= form.check_box :finished, class: "form-control-checkbox" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :thoughts, class: "form-label" %>
+      <%= form.text_area :thoughts, rows:6, class: "form-control thoughts-input" %>
+    </div>
+
+    <div class="action-buttons">
+      <div class="back-link">
+        <%= link_to "< Back", books_path, class: "btn btn-secondary" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.submit "Create Book", class: "btn btn-primary btn-custom" %>
+      </div>
     </div>
   <% end %>
-
-  <div class="back-link">
-    <%= link_to "Back", root_path, class: "btn btn-secondary" %>
-  </div>
 </div>
