@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'entries#index'
-  resources :entries, only: [:create, :new]
+  root 'books#landing'
+  resources :books, only: [:create, :index, :new, :destroy]
  end

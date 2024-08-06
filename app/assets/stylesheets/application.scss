@@ -1,0 +1,167 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap";
+
+ // custom color variables
+$bookr-white: #ffffff;
+$bookr-brown-dark: #221B1B;
+$bookr-brown-mid: #493C3C;
+$bookr-brown-light: #E4D4C8;
+$bookr-red: #E42535;
+
+body {
+    background-color: $bookr-brown-light;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    padding-top: 1rem;
+}
+
+// Navbar custom styles
+.navbar-custom {
+  background-color: $bookr-brown-dark;
+}
+
+.navbar-custom .navbar-brand{
+  color: $bookr-white;
+}
+
+
+.navbar-custom .nav-link {
+  color: $bookr-brown-light;
+}
+
+.navbar-custom .nav-link:hover {
+  color: $bookr-white;
+}
+
+.logo-class {
+    max-width: 1.5rem;
+    margin-right: 0.3rem;
+    margin-top: -0.3rem;
+}
+
+
+// Book shelf styles
+.book {
+    background-color: $bookr-brown-dark;
+    border: 1px solid $bookr-brown-dark;
+    border-radius: 4px;
+    box-shadow: 2rem rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, border-color 0.3s;
+    height: 350px; // 1.5 times the width
+    overflow: hidden;
+    position: relative;
+    display: flex;
+  }
+  
+  .book:hover {
+    transform: scale(1.05);
+  }
+  
+  .book:focus-within {
+    border: 5px solid $bookr-red;
+  }
+  
+  .book-content {
+    padding: 1rem;
+  }
+  
+  .book-title {
+    font-size: 1.25rem;
+    color: $bookr-white;
+  }
+  
+  .book-link a {
+    color: $bookr-brown-light;
+    text-decoration: none;
+  }
+  
+  .book-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .delete-icon {
+    max-width: 2rem;
+    margin: -0.5rem;
+  }
+
+  // New Entry page custom styles
+.new-entry-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: $bookr-brown-light;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    color: $bookr-brown-dark;
+    font-weight: bold;
+  }
+  
+  .form-control {
+    border: 2px solid $bookr-brown-dark;
+    border-radius: 4px;
+    padding: 10px;
+    transition: border-color 0.3s;
+  }
+  
+  .form-control:focus {
+    border-color: $bookr-red;
+    box-shadow: 0 0 5px rgba($bookr-red, 0.5);
+  }
+  
+  .btn-custom {
+    background-color: $bookr-red;
+    border-color: $bookr-red;
+    color: $bookr-white;
+  }
+  
+  .btn-custom:hover, .btn-custom:focus {
+    background-color: darken($bookr-red, 10%);
+    border-color: darken($bookr-red, 10%);
+  }
+  
+  .back-link {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .btn-secondary {
+    background-color: $bookr-brown-dark;
+    border-color: $bookr-brown-dark;
+    color: $bookr-white;
+  }
+  
+  .btn-secondary:hover, .btn-secondary:focus {
+    background-color: darken($bookr-brown-dark, 10%);
+    border-color: darken($bookr-brown-dark, 10%);
+  }
