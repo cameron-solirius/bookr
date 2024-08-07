@@ -79,6 +79,6 @@ test:
 #
 production:
   <<: *default
-  database: mysite
-  username: mysite
+  database: bookr_production
+  username: bookr
   password: <%= ENV["BOOKR_DATABASE_PASSWORD"] %>
