@@ -1,18 +1,39 @@
 <h1 class="text-center mb-4 title-fade-in">My Books</h1>
 <div class="container">
   <div class="row">
-    <% @books.each do |book| %>
-      <div class="col-md-3 mb-4">
-        <div class="book">
-          <div class="book-content">
-            <h5 class="book-title"><%= book.title %></h5>
-
-            <%= button_to book, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure you want to delete this book?" } do %>
-              <%= image_tag 'bin.png', alt: 'Delete', class: 'delete-icon' %>
-            <% end %>
-            </div>
-        </div>
+    <% if @books.empty? %>
+      <div class="empty-container col-12 text-center">
+        <h2 class="empty-messsage">So empty... </h2>
+        <%= link_to "Add a book", new_book_path, class: "empty-button" %>
       </div>
+    <% else %>
+      <% @books.each do |book| %>
+        <div class="col-md-3 mb-4">
+          <div class="book">
+            <div class="book-content">
+              <div>
+                <h2 class="book-title"><%= book.title %></h2>
+                <h3 class="book-author"><%= book.author %></h3>
+                <% if book.finished %>
+                  <p class="book-finished-date">Finished on <%= book.finishedDate %></p>
+                  <h3 class="book-stars"><%= book.stars %> stars</h3>
+                <% else %>
+                  <p class="book-started-date">Started on <%= book.created_at.strftime('%Y-%m-%d') %></p>
+                <% end %>
+              </div>
+              <div class="book-buttons-container">
+                <%= button_to book, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure you want to delete this book?" } do %>
+                  <%= image_tag 'bin.png', alt: 'Delete', class: 'delete-icon' %>
+                <% end %>
+
+                <div class="open-link-container">
+                  <%= link_to ">", book_path(book), class: "open-link" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

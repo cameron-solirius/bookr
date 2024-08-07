@@ -83,7 +83,7 @@ main {
     background-color: $bookr-brown-dark;
     border: 1px solid $bookr-brown-dark;
     border-radius: 4px;
-    box-shadow: 2rem rgba(0, 0, 0, 0.2);
+    box-shadow: 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, border-color 0.3s;
     height: 350px;
     overflow: hidden;
@@ -93,11 +93,28 @@ main {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
   }
+
+  .book:hover {
+    transform: scale(1.05);
+    transform-origin: center center;
+  }
+
+  .book:focus-within {
+    border: 5px solid $bookr-red;
+  }
   
+  .book-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+
   @keyframes fadeInAnimation {
     0% {
         opacity: 0;
-        transform: translateY(10rem);
+        transform: translateY(8rem);
     }
     100% {
         opacity: 1;
@@ -114,41 +131,79 @@ main {
 @keyframes titleAnimation {
     0% {
         opacity: 0;
+        transform: translateY(-3rem);
     }
     100% {
         opacity: 1;
+        transform: translateY(0rem);
     }
 }
 
-  .book:hover {
-    transform: scale(1.05);
-  }
-  
-  .book:focus-within {
-    border: 5px solid $bookr-red;
-  }
-  
-  .book-content {
-    padding: 1rem;
-  }
-  
+.empty-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.empty-message {
+    color: $bookr-brown-dark;
+    font-size: 2rem;
+    font-style: italic;
+}
+
+.empty-button {
+    text-decoration: none;
+    color: $bookr-brown-dark;
+    font-size: 2rem;
+    margin-left: 1rem;
+    font-family: var(--bs-body-font-family);
+    transition: 1s;
+    font-weight: 600;
+
+    &:hover {
+        color: $bookr-red;
+        transform: scale(1.05);
+    }
+}
+
   .book-title {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     color: $bookr-white;
   }
   
-  .book-link a {
+    .book-author {
+        font-size: 1.25rem;
+        color: $bookr-brown-light;
+    }
+
+.book-finished-date {
+ color: $bookr-brown-light;
+ font-style: italic;
+}
+
+.book-started-date {
     color: $bookr-brown-light;
-    text-decoration: none;
-  }
-  
-  .book-link a:hover {
-    text-decoration: underline;
-  }
+    font-style: italic;
+}
+
+.book-stars {
+    color: gold;
+}
   
   .row {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .book-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
   }
 
   .delete-icon {
@@ -156,7 +211,153 @@ main {
     margin: -0.5rem;
   }
 
- 
+
+
+  .open-link-container {
+    width: 34px;
+    height: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .open-link {
+    background-color: $bookr-brown-light;
+    text-decoration: none;
+    color: $bookr-brown-dark;
+    width: 34px;
+    height: 31px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 2px;
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+
+// Show book styles
+.show-container {
+    display: flex;
+    justify-content: center;
+}
+
+.show-book-content {
+    background-color: $bookr-brown-dark;
+    border-radius: 8px;
+    width: 50%;
+    min-height: 700px;
+    padding: 1rem;
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    box-shadow: 2rem rgba(0, 0, 0, 0.2);
+}
+
+.show-book-title {
+    color: $bookr-white;
+    font-size: 3.5rem;
+}
+
+.show-book-author {
+    color: $bookr-brown-light;
+    font-size: 2.5rem;
+}
+
+
+
+.show-book-finished-date {
+    color: $bookr-brown-light;
+    font-style: italic;
+    margin: 0;
+   }
+   
+   .show-book-started-date {
+       color: $bookr-brown-light;
+       font-style: italic;
+   }
+   
+   .show-book-stars {
+       color: gold;
+   }
+
+.show-book-label {
+    color: $bookr-white;
+}
+
+   .show-book-thoughts {
+    color: $bookr-brown-dark;
+    background-color: $bookr-white;
+    border: 2px solid $black;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 300px;
+    height: fit-content;
+}
+
+
+.show-book-back-container {
+    width: 34px;
+    height: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.show-book-back {
+    background-color: $bookr-brown-light;
+    text-decoration: none;
+    color: $bookr-brown-dark;
+    width: 34px;
+    height: 31px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 2px;
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+.show-book-buttons-container {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.show-delete-icon {
+    max-width: 2rem;
+    margin: 0rem;
+  }
+
+
+.show-book-edit-container {
+    width: 4rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.show-book-edit {
+    background-color: $bookr-brown-light;
+    text-decoration: none;
+    color: $bookr-brown-dark;
+    width: 4rem;
+    height: 2.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 8px;
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
 // New Entry page custom styles
 .new-entry-container {
     max-width: 600px;
@@ -175,6 +376,11 @@ main {
   
   .form-label {
     color: $bookr-brown-dark;
+    font-weight: bold;
+  }
+
+  .form-label-edit {
+    color: $bookr-brown-light;
     font-weight: bold;
   }
   
