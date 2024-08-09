@@ -31,6 +31,11 @@ class BooksController < ApplicationController
     
       def update
         @book = Book.find(params[:id])
+        
+        if !@book.finished && book_params[:finished] == "1"
+          @book.finishedDate = Date.today
+        end
+      
         if @book.update(book_params)
           redirect_to @book
         else

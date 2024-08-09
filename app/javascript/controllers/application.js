@@ -1,5 +1,7 @@
 import { Application } from "@hotwired/stimulus"
 
+import "../controllers/toggle_fields_controller";
+
 const application = Application.start()
 
 // Configure Stimulus development experience

@@ -111,6 +111,12 @@ main {
     width: 100%;
   }
 
+  .fade-in-animation {
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
   @keyframes fadeInAnimation {
     0% {
         opacity: 0;
@@ -254,6 +260,13 @@ main {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     box-shadow: 2rem rgba(0, 0, 0, 0.2);
+}
+
+.book-form-spacing {
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .show-book-title {

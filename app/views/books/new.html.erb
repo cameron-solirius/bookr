@@ -18,15 +18,15 @@
 
     <div class="form-group">
       <%= form.label :finished, class: "form-label" %>
-      <%= form.check_box :finished, class: "form-control-checkbox" %>
+      <%= form.check_box :finished, class: "form-control-checkbox", data: { toggle: "true" } %>
     </div>
 
-    <div class="form-group">
+    <div class="form-group toggle-fields" style="display:none;">
       <%= form.label :stars, class: "form-label" %>
       <%= form.number_field :stars, class: "form-control" %>
     </div>
 
-    <div class="form-group">
+    <div class="form-group toggle-fields" style="display:none;">
       <%= form.label :thoughts, class: "form-label" %>
       <%= form.text_area :thoughts, rows:6, class: "form-control thoughts-input" %>
     </div>

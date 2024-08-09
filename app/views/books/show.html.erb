@@ -1,28 +1,30 @@
 <h1 class="text-center mb-4 title-fade-in">My Books</h1>
 <div class="container show-container">
 
-<div class="show-book-content">
-    <div class="show-book-back-container">
-      <%= link_to '<', books_path, class: 'show-book-back' %>
+<div class="show-book-content book-form-spacing">
+    <div>
+        <div class="show-book-back-container">
+        <%= link_to '< Back', books_path, class: 'show-book-back' %>
+        </div>
+        <h1 class="show-book-title"><%= @book.title %></h1>
+        <h2 class="show-book-author"><%= @book.author %></h2>
+        <br/>
+        <% if @book.finished %>
+            <p class="show-book-finished-date">Finished on: <%= @book.finishedDate %></p>
+            <h3 class="show-book-stars"><%= @book.stars %> stars</h3>
+            <h3 class="show-book-label">Your thoughts</h3>
+            <p class="show-book-thoughts"><%= @book.thoughts %></p>
+        <% else %>
+            <p class="show-book-started-date">Started on: <%= @book.created_at.strftime('%Y-%m-%d') %></p>
+        <% end %>
     </div>
-  <h1 class="show-book-title"><%= @book.title %></h1>
-  <h2 class="show-book-author"><%= @book.author %></h2>
-  <br/>
-  <% if @book.finished %>
-    <p class="show-book-finished-date">Finished on: <%= @book.finishedDate %></p>
-    <h3 class="show-book-stars"><%= @book.stars %> stars</h3>
-  <% else %>
-    <p class="show-book-started-date">Started on: <%= @book.created_at.strftime('%Y-%m-%d') %></p>
-  <% end %>
-  <h3 class="show-book-label">Your thoughts</h3>
-  <p class="show-book-thoughts"><%= @book.thoughts %></p>
-  <div class="show-book-buttons-container">
-    <%= button_to @book, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure you want to delete this book?" } do %>
-        <%= image_tag 'bin.png', alt: 'Delete', class: 'show-delete-icon' %>
-    <% end %>
-    <div class="show-book-edit-container">
-        <%= link_to 'Edit', edit_book_path(@book), class: 'show-book-edit' %>
+    <div class="show-book-buttons-container">
+        <%= button_to @book, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure you want to delete this book?" } do %>
+            <%= image_tag 'bin.png', alt: 'Delete', class: 'show-delete-icon' %>
+        <% end %>
+        <div class="show-book-edit-container">
+            <%= link_to 'Edit', edit_book_path(@book), class: 'show-book-edit' %>
+        </div>
     </div>
-  </div>
 </div>
 </div>
