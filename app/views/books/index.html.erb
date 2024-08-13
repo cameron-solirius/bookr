@@ -16,7 +16,7 @@
 
       <% @books_unfinished_sort_by_created.each do |book| %>
         <div class="col-md-3 mb-4">
-          <div class="book">
+          <div class="book" data-book-id="<%= book.id %>">
             <div class="book-content">
               <div>
                 <h2 class="book-title"><%= book.title %></h2>
@@ -54,7 +54,7 @@
 
         <% books_to_display.each do |book| %>
           <div class="col-md-3 mb-4">
-            <div class="book">
+            <div class="book" data-book-id="<%= book.id %>">
               <div class="book-content">
                 <div>
                   <h2 class="book-title"><%= book.title %></h2>
