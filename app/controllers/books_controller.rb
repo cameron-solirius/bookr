@@ -7,6 +7,10 @@ class BooksController < ApplicationController
         
         @books_unfinished_sort_by_created = Book.where(finished: false).all.sort_by(&:created_at).reverse
         @books_finished_sort_by_finished_date = Book.where(finished: true).all.reverse.sort_by(&:finishedDate).reverse
+
+        @books_finished_sort_by_stars = Book.where(finished: true).order(stars: :desc)
+
+        @sort_by_stars = params[:sort_by] == 'stars'
     end
  
     def landing

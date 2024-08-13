@@ -8,7 +8,7 @@
       </div>
     <% else %>
 
-        <% if @books_unfinished.any? && @books_finished.any? %>
+      <% if @books_unfinished.any? && @books_finished.any? %>
         <div class="col-12 fade-in-animation">
           <h2>What you're reading...</h2>
         </div>
@@ -37,35 +37,44 @@
         </div>
       <% end %>
 
-      <!-- Break line between unfinished and finished books -->
       <% if @books_finished.any? %>
         <div class="col-12 fade-in-animation">
-          <h2>What you've read...</h2>
-        </div>
-      <% end %>
-
-      <% @books_finished_sort_by_finished_date.each do |book| %>
-        <div class="col-md-3 mb-4">
-          <div class="book">
-            <div class="book-content">
-              <div>
-                <h2 class="book-title"><%= book.title %></h2>
-                <h3 class="book-author"><%= book.author %></h3>
-                <p class="book-finished-date">Finished on <%= book.finishedDate %></p>
-                <h3 class="book-stars"><%= book.stars %> stars</h3>
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>What you've read...</h2>
+            <%= form_with url: books_path, method: :get, local: true, class: "d-inline-flex align-items-center" do %>
+              <div class="form-check form-switch">
+                <%= check_box_tag :sort_by, 'stars', @sort_by_stars, id: 'sort_by_stars', class: "form-check-input", onchange: 'this.form.submit();' %>
+                <label class="form-check-label" for="sort_by_stars">Sort by stars</label>
               </div>
-              <div class="book-buttons-container">
-                <%= button_to book, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure you want to delete this book?" } do %>
-                  <%= image_tag 'bin.png', alt: 'Delete', class: 'delete-icon' %>
-                <% end %>
+            <% end %>
+          </div>
+        </div>
 
-                <div class="open-link-container">
-                  <%= link_to ">", book_path(book), class: "open-link" %>
+        <% books_to_display = @sort_by_stars ? @books_finished_sort_by_stars : @books_finished_sort_by_finished_date %>
+
+        <% books_to_display.each do |book| %>
+          <div class="col-md-3 mb-4">
+            <div class="book">
+              <div class="book-content">
+                <div>
+                  <h2 class="book-title"><%= book.title %></h2>
+                  <h3 class="book-author"><%= book.author %></h3>
+                  <p class="book-finished-date">Finished on <%= book.finishedDate %></p>
+                  <h3 class="book-stars"><%= book.stars %> stars</h3>
+                </div>
+                <div class="book-buttons-container">
+                  <%= button_to book, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure you want to delete this book?" } do %>
+                    <%= image_tag 'bin.png', alt: 'Delete', class: 'delete-icon' %>
+                  <% end %>
+
+                  <div class="open-link-container">
+                    <%= link_to ">", book_path(book), class: "open-link" %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
