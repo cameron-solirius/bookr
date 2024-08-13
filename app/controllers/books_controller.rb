@@ -1,6 +1,12 @@
 class BooksController < ApplicationController
     def index
         @books = Book.all
+
+        @books_unfinished = Book.where(finished: false).all
+        @books_finished = Book.where(finished: true).all
+        
+        @books_unfinished_sort_by_created = Book.where(finished: false).all.sort_by(&:created_at).reverse
+        @books_finished_sort_by_finished_date = Book.where(finished: true).all.reverse.sort_by(&:finishedDate).reverse
     end
  
     def landing

@@ -7,16 +7,14 @@
         <%= link_to "Add a book", new_book_path, class: "empty-button" %>
       </div>
     <% else %>
-      <% unfinished_books = @books.select { |book| !book.finished }.sort_by(&:created_at).reverse %>
-      <% finished_books = @books.select { |book| book.finished }.reverse.sort_by(&:finishedDate).reverse %>
 
-        <% if unfinished_books.any? && finished_books.any? %>
+        <% if @books_unfinished.any? && @books_finished.any? %>
         <div class="col-12 fade-in-animation">
           <h2>What you're reading...</h2>
         </div>
       <% end %>
 
-      <% unfinished_books.each do |book| %>
+      <% @books_unfinished_sort_by_created.each do |book| %>
         <div class="col-md-3 mb-4">
           <div class="book">
             <div class="book-content">
@@ -40,13 +38,13 @@
       <% end %>
 
       <!-- Break line between unfinished and finished books -->
-      <% if finished_books.any? %>
+      <% if @books_finished.any? %>
         <div class="col-12 fade-in-animation">
           <h2>What you've read...</h2>
         </div>
       <% end %>
 
-      <% finished_books.each do |book| %>
+      <% @books_finished_sort_by_finished_date.each do |book| %>
         <div class="col-md-3 mb-4">
           <div class="book">
             <div class="book-content">
