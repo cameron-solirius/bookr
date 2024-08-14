@@ -95,7 +95,7 @@ main {
   }
 
   .book:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateY(10rem);
     transform-origin: center center;
   }
 

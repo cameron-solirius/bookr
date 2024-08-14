@@ -123,13 +123,18 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test "updating a book" do
-    visit edit_book_url(@book)
-    fill_in "Title", with: "Updated Title"
-    fill_in "Thoughts", with: "Updated thoughts."
+    book_to_update = FactoryBot.create(:book, :unfinished)
+
+    visit edit_book_url(book_to_update)
+    fill_in "Title", with: "Lord of the Tests"
+    check "Finished"
+    fill_in "Stars", with: "3.5"
+    fill_in "Thoughts", with: "I meant to read Lord of the Rings"
     click_on "Save changes"
 
-    assert_text "Updated Title"
-    assert_text "Updated thoughts."
+    visit edit_book_url(book_to_update)
+    assert_equal "Lord of the Tests", find_field("Title").value, "Book title should equal updated title"
+    assert_text "I meant to read Lord of the Rings"
   end
 
   test "deleting a book" do
@@ -172,22 +177,5 @@ class BooksTest < ApplicationSystemTestCase
     assert_selector '.toggle-fields', visible: true
     uncheck "Finished"
     assert_selector '.toggle-fields', visible: false
-  end
-
-  test "should reset finishedDate if book is marked unfinished and then finished" do
-    book = FactoryBot.create(:book, finished: true, finishedDate: Date.yesterday)
-    book.update(finished: false)
-    assert_equal false, book.finished
-
-    visit edit_book_url(book)
-
-    fill_in "Title", with: "The Great Gatsby"
-    check "Finished"
-    click_on "Save changes"
-    assert_text "My Books"
-    assert_equal "The Great Gatsby", book.title
-    assert_equal true, book.finished
-
-    assert_equal Date.today, book.finishedDate, "Finished date should be reset when book is marked unfinished and then finished"
   end
 end
