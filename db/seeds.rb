@@ -61,7 +61,7 @@ Book.create([
   {
     title: "The Hobbit",
     author: "J.R.R. Tolkien",
-    stars: 4.8,
+    stars: 4.5,
     finished: true,
     thoughts: "Off to the Shire again! Why can’t my vacations be this adventurous?",
     finishedDate: Date.new(2023, 5, 12)
@@ -93,7 +93,7 @@ Book.create([
   {
     title: "Crime and Punishment",
     author: "Fyodor Dostoevsky",
-    stars: 4.7,
+    stars: 4.0,
     finished: true,
     thoughts: "Raskolnikov's mind is a maze. If only my guilt trips were this philosophical.",
     finishedDate: Date.new(2023, 8, 3)
@@ -101,7 +101,7 @@ Book.create([
   {
     title: "The Divine Comedy",
     author: "Dante Alighieri",
-    stars: 4.9,
+    stars: 4.5,
     finished: true,
     thoughts: "Hell has some interesting neighbors. And I thought my apartment complex was bad!",
     finishedDate: Date.new(2023, 9, 15)
@@ -109,7 +109,7 @@ Book.create([
   {
     title: "Jane Eyre",
     author: "Charlotte Brontë",
-    stars: 4.3,
+    stars: 3.5,
     finished: true,
     thoughts: "Gothic romance at its best. I wouldn't mind a mysterious attic or two in my love life.",
     finishedDate: Date.new(2023, 10, 18)
@@ -122,7 +122,7 @@ Book.create([
   {
     title: "The Alchemist",
     author: "Paulo Coelho",
-    stars: 4.4,
+    stars: 2.5,
     finished: true,
     thoughts: "Follow your dreams! But maybe not through the desert, unless you’re really committed.",
     finishedDate: Date.new(2023, 11, 12)
@@ -130,7 +130,7 @@ Book.create([
   {
     title: "Les Misérables",
     author: "Victor Hugo",
-    stars: 4.6,
+    stars: 4.0,
     finished: true,
     thoughts: "Jean Valjean, what a hero! And here I am, struggling to get out of bed.",
     finishedDate: Date.new(2023, 12, 8)
@@ -154,7 +154,7 @@ Book.create([
   {
     title: "The Hitchhiker's Guide to the Galaxy",
     author: "Douglas Adams",
-    stars: 4.8,
+    stars: 5.0,
     finished: true,
     thoughts: "42 is the answer to everything. Including why my socks disappear.",
     finishedDate: Date.new(2023, 7, 7)
@@ -170,7 +170,7 @@ Book.create([
   {
     title: "To the Lighthouse",
     author: "Virginia Woolf",
-    stars: 4.2,
+    stars: 3.5,
     finished: true,
     thoughts: "Stream of consciousness at its finest. Makes my daily thoughts seem so mundane.",
     finishedDate: Date.new(2023, 8, 15)

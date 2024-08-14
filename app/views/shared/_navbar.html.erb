@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-custom">
 <div class="container">
   <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag("bookr-white.png", alt: "Logo", class: "logo-class") %>
+      <%= image_tag("bookr-white.png", alt: "Bookr Logo", class: "logo-class") %>
       <span>Bookr</span>
     <% end %>
     <ul class="navbar-nav navbar-link ml-auto">
@@ -10,6 +10,9 @@
         </li> 
         <li class="nav-item">
         <%= link_to "New Book", new_book_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to "Log Out", root_path, class: "nav-link" %>
         </li>
     </ul>
 </div>
