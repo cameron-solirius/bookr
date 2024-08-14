@@ -43,10 +43,32 @@ class BooksTest < ApplicationSystemTestCase
     assert_equal [book3, book2, book1], sorted_books, "Books are not sorted correctly by finished date"
   end
 
+  # Edge case tests
+  test "should handle finishedDate properly when book is marked finished" do
+    book = FactoryBot.create(:book, :unfinished)
+    assert_nil book.finishedDate, "Finished date should be nil for unfinished book"
+
+    book.update(finished: true, finishedDate: Date.today)
+    assert_not_nil book.finishedDate, "Finished date should be set when book is marked finished"
+    assert_equal Date.today, book.finishedDate, "Finished date should be today's date"
+  end
+
+  test "should retain finishedDate when updating other attributes" do
+    book = FactoryBot.create(:book, finished: true, finishedDate: Date.yesterday)
+    book.update(title: "Updated Title")
+    assert_equal Date.yesterday, book.finishedDate, "Finished date should not change when updating other attributes"
+  end
+
+  test "should allow different books with the same author" do
+    FactoryBot.create(:book, author: "Same Author", title: "First Title")
+    another_book = FactoryBot.build(:book, author: "Same Author", title: "Second Title")
+    assert another_book.save, "Failed to save a book with the same author but different title"
+  end
+
   # FRONTEND
 
   setup do
-    # Use FactoryBot to create books instead of using fixtures
+    # Using FactoryBot to create books instead of using fixtures
     @book = FactoryBot.create(:book)
     @book_two = FactoryBot.create(:book, title: "Second Book Title", author: "Another Author")
   end
@@ -150,5 +172,22 @@ class BooksTest < ApplicationSystemTestCase
     assert_selector '.toggle-fields', visible: true
     uncheck "Finished"
     assert_selector '.toggle-fields', visible: false
+  end
+
+  test "should reset finishedDate if book is marked unfinished and then finished" do
+    book = FactoryBot.create(:book, finished: true, finishedDate: Date.yesterday)
+    book.update(finished: false)
+    assert_equal false, book.finished
+
+    visit edit_book_url(book)
+
+    fill_in "Title", with: "The Great Gatsby"
+    check "Finished"
+    click_on "Save changes"
+    assert_text "My Books"
+    assert_equal "The Great Gatsby", book.title
+    assert_equal true, book.finished
+
+    assert_equal Date.today, book.finishedDate, "Finished date should be reset when book is marked unfinished and then finished"
   end
 end

@@ -36,6 +36,7 @@ class HomesTest < ApplicationSystemTestCase
 
     assert_selector "h1", text: "New Book"
   end
+
   test "visiting the landing page 3" do
     visit root_url
 
