@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class BooksTest < ApplicationSystemTestCase
   # Backend tests
-
+  # Validation
   test "should save valid book" do
     book = FactoryBot.create(:book)
     assert book.save
@@ -13,7 +13,37 @@ class BooksTest < ApplicationSystemTestCase
     assert book.save
   end
 
-  # Frontend tests
+  # Scope tests
+  test "should return only finished books" do
+    Book.delete_all
+    FactoryBot.create(:book, finished: true)
+    FactoryBot.create(:book, :unfinished)
+
+    finished_books = Book.where(finished: true)
+    assert_equal 1, finished_books.count, "Failed to return the correct number of finished books"
+  end
+
+  test "should return books sorted by stars" do
+    Book.delete_all
+    book1 = FactoryBot.create(:book, finished: true, stars: 4.0)
+    book2 = FactoryBot.create(:book, finished: true, stars: 3.0)
+    book3 = FactoryBot.create(:book, finished: true, stars: 5.0)
+
+    sorted_books = Book.where(finished: true).order(stars: :desc)
+    assert_equal [book3, book1, book2], sorted_books, "Books are not sorted correctly by stars"
+  end
+
+  test "should return books sorted by finished date" do
+    Book.delete_all
+    book1 = FactoryBot.create(:book, finished: true, finishedDate: Date.yesterday)
+    book2 = FactoryBot.create(:book, finished: true, finishedDate: Date.today)
+    book3 = FactoryBot.create(:book, finished: true, finishedDate: Date.tomorrow)
+
+    sorted_books = Book.where(finished: true).order(finishedDate: :desc)
+    assert_equal [book3, book2, book1], sorted_books, "Books are not sorted correctly by finished date"
+  end
+
+  # FRONTEND
 
   setup do
     # Use FactoryBot to create books instead of using fixtures

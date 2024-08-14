@@ -1,6 +1,6 @@
 FactoryBot.define do
-    factory :book do |f|
-      f.sequence(:title) { |n| "Testing for Dummies #{n}" }
+    factory :book do
+      sequence(:title) { |n| "Testing for Dummies #{n}" }
       author { "Tess Ter" }
       stars { 4.0 }
       finished { true }
