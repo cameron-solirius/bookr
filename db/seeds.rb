@@ -38,11 +38,6 @@ Book.create([
     finished: false
   },
   {
-    title: "The Heart is a Lonely Hunter",
-    author: "Carson McCullers",
-    finished: false
-  },
-  {
     title: "The Catcher in the Rye",
     author: "J.D. Salinger",
     stars: 3.5,
@@ -142,6 +137,27 @@ Book.create([
     finished: true,
     thoughts: "Expecto Patronum! If only I could magic away my chores.",
     finishedDate: Date.new(2023, 5, 20)
+  },
+  {
+    title: "Harry Potter and the Chamber of Secrets",
+    author: "J.K. Rowling",
+    stars: 4.0,
+    finished: true,
+    thoughts: "Potter is life",
+    finishedDate: Date.new(2023, 6, 22)
+  },
+  {
+    title: "Harry Potter and the Prisoner of Azkaban",
+    author: "J.K. Rowling",
+    stars: 4.0,
+    finished: true,
+    thoughts: "Potter is life",
+    finishedDate: Date.new(2023, 12, 22)
+  },
+  {
+    title: "Harry Potter and the Goblet of Fire",
+    author: "J.K. Rowling",
+    finished: false
   },
   {
     title: "The Lord of the Rings",

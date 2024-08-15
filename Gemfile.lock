@@ -122,6 +122,8 @@ GEM
     formatador (1.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    groupdate (6.4.0)
+      activesupport (>= 6.1)
     guard (2.18.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -329,6 +331,7 @@ DEPENDENCIES
   debug
   error_highlight (>= 0.4.0)
   factory_bot_rails
+  groupdate
   guard
   guard-minitest
   importmap-rails

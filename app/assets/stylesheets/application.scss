@@ -70,13 +70,31 @@ main {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 0 20rem;
+    padding: 2rem 20rem;
+    margin-bottom: 5rem;
   }
 
   .landing-img {
-    max-width: 10rem;
+    max-width: 8rem;
+    transition: 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
+  .landing-graph-section {
+    padding: 2rem 20rem;
+  }
+
+  .landing-graph-container {
+    background-color: $bookr-white;
+    border-radius: 20px;
+    border: solid 4px $bookr-brown-dark;
+    box-shadow: rgba($bookr-brown-dark, 0.3) 8px 8px 10px;
+    padding: 2rem;
+  }
 
 // Book shelf styles
 .index-search-btn {
@@ -96,20 +114,15 @@ main {
     background-color: $bookr-brown-dark;
     border: 1px solid $bookr-brown-dark;
     border-radius: 12px;
-    box-shadow: 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, border-color 0.3s;
+    box-shadow: rgba($bookr-brown-dark, 0.3) 6px 6px 8px;
+    transition: transform 0.5s;
     height: 350px;
     overflow: hidden;
     position: relative;
     display: flex;
-    animation: fadeInAnimation ease 0.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-  }
-
-  .book:hover {
-    transform: scale(1.05) translateY(10rem);
-    transform-origin: center center;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   .book:focus-within {
@@ -122,6 +135,13 @@ main {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+  }
+
+  .speech-bubble-icon {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+
   }
 
   .fade-in-animation {
@@ -233,7 +253,7 @@ main {
 
 
   .open-link-container {
-    width: 34px;
+    width: 68px;
     height: 31px;
     display: flex;
     justify-content: center;
@@ -244,7 +264,7 @@ main {
     background-color: $bookr-brown-light;
     text-decoration: none;
     color: $bookr-brown-dark;
-    width: 34px;
+    width: 68px;
     height: 31px;
     cursor: pointer;
     border-radius: 4px;
@@ -325,7 +345,7 @@ main {
 
 
 .show-book-back-container {
-    width: 34px;
+    width: 68px;
     height: 31px;
     display: flex;
     justify-content: center;
@@ -336,7 +356,7 @@ main {
     background-color: $bookr-brown-light;
     text-decoration: none;
     color: $bookr-brown-dark;
-    width: 34px;
+    width: 68px;
     height: 31px;
     cursor: pointer;
     border-radius: 4px;

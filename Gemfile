@@ -49,6 +49,7 @@ group :development do
   gem 'guard'
   gem 'guard-minitest'
   gem "chartkick"
+  gem "groupdate"
 end
 
 group :test do

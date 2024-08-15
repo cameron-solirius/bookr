@@ -2,13 +2,23 @@
 <h1 class="text-center mb-4 title-fade-in">Welcome to Bookr</h1>
 
 <div class="landing-content">
-    <h2 class="text-center"><%= @books.length %> books added!</h2>
+    <h2 class="text-center mb-4"><%= @books.length %> books added!</h2>
 
     <div class="landing-img-container">
     <% @books.each do |book| %>
-        <%= image_tag 'bookr.png', alt: "Bookr logo", class: "new-entry-img"%>
-    <% end %>
+        <%= link_to book_path(book) do %>
+          <%= image_tag 'bookr.png', alt: "Bookr logo", class: "landing-img" %>
+        <% end %>
+      <% end %>
+      
     </div>
+
+    <h2 class="text-center">Reading history</h2>
+
+    <div class="landing-graph-section" >
+        <div class="landing-graph-container" >
+         <%= line_chart Book.group_by_month(:finishedDate).count, colors: ["#E42535", "#fff"],  download: true, xtitle: "Month", ytitle: "Books Finished" %>
+        </div>
+    </div>
+    <h2 class="text-center mb-4">Keep it up!</h2>
 </div>
-
-

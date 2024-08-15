@@ -1,6 +1,6 @@
 <h1 class="text-center mb-4 title-fade-in">My Books</h1>
-<div class="container">
-  <div class="row mb-4 fade-in-animation">
+<div class="container fade-in-animation">
+  <div class="row mb-4">
     <div class="col-12 d-flex justify-content-center">
 
       <%= form_with url: books_path, method: :get, local: true, class: "d-inline-flex align-items-center" do %>
@@ -27,7 +27,7 @@
     <% else %>
 
       <% if @books_unfinished.any? && @books_finished.any? %>
-        <div class="col-12 fade-in-animation">
+        <div class="col-12">
           <h2>What you're reading...</h2>
         </div>
       <% end %>
@@ -47,7 +47,7 @@
                 <% end %>
 
                 <div class="open-link-container">
-                  <%= link_to ">", book_path(book), class: "open-link" %>
+                  <%= link_to "Open >", book_path(book), class: "open-link" %>
                 </div>
               </div>
             </div>
@@ -56,7 +56,7 @@
       <% end %>
 
       <% if @books_finished.any? %>
-        <div class="col-12 fade-in-animation">
+        <div class="col-12">
           <div class="d-flex justify-content-between align-items-center">
             <h2>What you've read...</h2>
               <%= form_with url: books_path, method: :get, local: true, class: "d-inline-flex align-items-center" do %>
@@ -79,6 +79,11 @@
                   <h3 class="book-author"><%= book.author %></h3>
                   <p class="book-finished-date">Finished on <%= book.finishedDate %></p>
                   <h3 class="book-stars"><%= book.stars %> stars</h3>
+                  <% if book.thoughts.present? %>
+                    <div class="book-thoughts">
+                      <%= image_tag 'speech-bubble.webp', alt: 'Thoughts icon', class: 'speech-bubble-icon' %>
+                    </div>
+                  <% end %>
                 </div>
                 <div class="book-buttons-container">
                   <%= button_to book, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure you want to delete this book?" } do %>
@@ -86,13 +91,14 @@
                   <% end %>
 
                   <div class="open-link-container">
-                    <%= link_to ">", book_path(book), class: "open-link" %>
+                    <%= link_to "Open >", book_path(book), class: "open-link" %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         <% end %>
+
       <% end %>
     <% end %>
   </div>
