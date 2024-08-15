@@ -1,5 +1,23 @@
 <h1 class="text-center mb-4 title-fade-in">My Books</h1>
 <div class="container">
+  <div class="row mb-4 fade-in-animation">
+    <div class="col-12 d-flex justify-content-center">
+
+      <%= form_with url: books_path, method: :get, local: true, class: "d-inline-flex align-items-center" do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], placeholder: "Search by title or author", class: "form-control" %>
+          <div class="input-group-append">
+            <%= button_tag type: "submit", class: "btn btn-primary index-search-btn" do %>
+              Search
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+
   <div class="row">
     <% if @books.empty? %>
       <div class="empty-container col-12 text-center">
@@ -41,12 +59,12 @@
         <div class="col-12 fade-in-animation">
           <div class="d-flex justify-content-between align-items-center">
             <h2>What you've read...</h2>
-            <%= form_with url: books_path, method: :get, local: true, class: "d-inline-flex align-items-center" do %>
-              <div class="form-check form-switch">
-                <%= check_box_tag :sort_by, 'stars', @sort_by_stars, id: 'sort_by_stars', class: "form-check-input", onchange: 'this.form.submit();' %>
-                <label class="form-check-label" for="sort_by_stars">Sort by stars</label>
-              </div>
-            <% end %>
+              <%= form_with url: books_path, method: :get, local: true, class: "d-inline-flex align-items-center" do %>
+                <div class="form-check form-switch">
+                  <%= check_box_tag :sort_by, 'stars', @sort_by_stars, id: 'sort_by_stars', class: "form-check-input", onchange: 'this.form.submit();' %>
+                  <label class="form-check-label" for="sort_by_stars">Sort by stars</label>
+                </div>
+              <% end %>
           </div>
         </div>
 

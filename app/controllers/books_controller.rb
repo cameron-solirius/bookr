@@ -2,13 +2,17 @@ class BooksController < ApplicationController
     def index
         @books = Book.all
 
-        @books_unfinished = Book.where(finished: false).all
-        @books_finished = Book.where(finished: true).all
-        
-        @books_unfinished_sort_by_created = Book.where(finished: false).all.sort_by(&:created_at).reverse
-        @books_finished_sort_by_finished_date = Book.where(finished: true).all.reverse.sort_by(&:finishedDate).reverse
+        if params[:search].present?
+            search_term = params[:search].downcase
+            @books = @books.where('LOWER(title) LIKE ? OR LOWER(author) LIKE ?', "%#{search_term}%", "%#{search_term}%")
+        end
 
-        @books_finished_sort_by_stars = Book.where(finished: true).order(stars: :desc)
+        @books_unfinished = @books.where(finished: false)
+        @books_finished = @books.where(finished: true)
+        
+        @books_unfinished_sort_by_created = @books_unfinished.order(created_at: :desc)
+        @books_finished_sort_by_finished_date = @books_finished.order(finishedDate: :desc)
+        @books_finished_sort_by_stars = @books_finished.order(stars: :desc)
 
         @sort_by_stars = params[:sort_by] == 'stars'
     end

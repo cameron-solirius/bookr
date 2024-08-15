@@ -79,6 +79,19 @@ main {
 
 
 // Book shelf styles
+.index-search-btn {
+  background-color: $bookr-red;
+  border-color: $bookr-red;
+  margin-left: 0.5rem;
+  margin-top: 0.2rem;
+
+  &:hover {
+    border-color: $bookr-red;
+    background-color: $bookr-red;
+    opacity: 0.9;
+  }
+}
+
 .book {
     background-color: $bookr-brown-dark;
     border: 1px solid $bookr-brown-dark;
