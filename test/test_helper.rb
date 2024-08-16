@@ -4,6 +4,7 @@ require "rails/test_help"
 
 require 'minitest/reporters'
 require 'factory_bot_rails'
+require 'minitest/reporters/html_reporter'
 
 Minitest::Reporters.use!(Minitest::Reporters::ProgressReporter.new(color: true),ENV,Minitest.backtrace_filter)
 

@@ -85,7 +85,7 @@ main {
   }
 
   .landing-graph-section {
-    padding: 2rem 20rem;
+    padding: 2rem 5rem;
   }
 
   .landing-graph-container {
@@ -458,7 +458,8 @@ main {
   }
   
   .btn-custom:hover,
-  .btn-custom:focus {
+  .btn-custom:focus,
+  .btn-custom:active {
     background-color: darken($bookr-red, 10%);
     border-color: darken($bookr-red, 10%);
   }

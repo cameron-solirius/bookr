@@ -3,6 +3,8 @@ require "application_system_test_case"
 class BooksTest < ApplicationSystemTestCase
   # Backend tests
   # Validation
+
+
   test "should save valid book" do
     book = FactoryBot.create(:book)
     assert book.save
@@ -141,11 +143,13 @@ class BooksTest < ApplicationSystemTestCase
     @book_del = FactoryBot.create(:book, title: "This book is scheduled for execution")
     visit books_url
     assert_text @book_del.title
+    
     within(:xpath, "//div[@data-book-id='#{@book_del.id}']") do
       accept_confirm do
         click_on "Delete"
       end
     end
+
     assert_text "My Books"
     assert_no_text @book_del.title
   end
